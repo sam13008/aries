@@ -36,6 +36,13 @@ final class Formateur extends Personne {
 
     public function ecrire($texte) {
         echo $texte;
+    }
+        
+        public function evaluerNote($note,Stagiaire $stagiaire) {
+            
+            
+            $stagiaire->addNote($note);
+        }
 }
     
     
@@ -43,4 +50,4 @@ final class Formateur extends Personne {
     
     
     
-}
+

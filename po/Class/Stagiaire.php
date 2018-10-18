@@ -15,6 +15,7 @@
 // extends sert a faire heriter le stagiaire de la classe personne
 class Stagiaire extends Personne{
     protected $email;
+    private $note = [];
     
     public function __construct($email,$nom, $prenom, $age) {
         $this->email = $email;
@@ -47,6 +48,28 @@ class Stagiaire extends Personne{
     final public function ecrire($texte, $support="ecran") {
         echo "$texte" . "sur" . $support;
 }
+
+public function getNote() {
+    return $this->note;
+}
+
+public function setNote($note) {
+    $this->note = $note;
+    return $this;
+}
+
+
+    public function addNote(int $note) {
+        
+        $this->note[]=$note;
+        return $this;
+    }
     
+    public function removeNote(int $index){
+        if(array_key_exists($index, $this->note)){
+            unset($this->note[$index]);
+        }
+        return $this;
+    }
     
 }
