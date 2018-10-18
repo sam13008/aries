@@ -14,3 +14,32 @@ $pdoSt = $pdo->query($sql);
 $pdoSt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Formateur::class);
 $formateurs = $pdoSt->fetchAll();
 var_dump($formateurs);
+?>
+<html>
+    <head>
+        <title>title</title>
+    </head>
+    <body>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+               <?php foreach($formateurs as $formateur): ?>
+                <tr>
+                    <td><?php echo $formateur->getId();?></td>
+                    <td><?php echo $formateur->getNom();?></td>
+                    <td><?php echo $formateur->getPrenom();?></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
+    </body>
+</html>
+
