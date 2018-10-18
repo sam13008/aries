@@ -23,7 +23,8 @@ abstract class Personne {
     public $prenom = "mickey";
     
     protected $age;
-    private $genre;
+    protected $genre;
+    protected $id;
     const TETE= 1 ;
     
     public static $population=0;
@@ -100,6 +101,17 @@ abstract class Personne {
 
 // le but est de pouvoir imposer au classe fille de surcharger la methode ecrire
     public abstract function ecrire($texte);
+    
+    public function getId() {
+        return $this->id;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+        return $this;
+    }
+
+
     
     
     
