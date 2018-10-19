@@ -16,6 +16,29 @@ class Formation {
     private $id, $nom, $image;
     private $erreur=[];
     
+    public function __construct(array $request = []) {
+        if($request) {
+            $this->hydratation($request);
+        }
+    }
+
+    
+    
+    private function hydratation(array $request ) {
+        if($request){
+        foreach ($request as $key => $value) {
+            $setter = "set" .ucfirst($key);
+            //permet de creer par exemple le setName en fontion des cle du post
+            if (method_exists($this, $setter)){
+                //peermt de verifier qu par exemple il ny a pas un token dans larray
+                $this->$setter($value);
+            }
+
+}
+        }     
+    }
+
+    
     public function getId() {
         return $this->id;
     }
@@ -41,14 +64,19 @@ class Formation {
         if (strlen($nom) >= 2){
         $this->nom = $nom;}
     else {
-    $this->erreurs[] = "Nom invalide";
+    $this->erreur[] = "Nom invalide";
 }
         
         return $this;
     }
 
     public function setImage($image) {
-        $this->image = $image;
+         if ($image !== ""){
+        
+         $this->image = $image;
+         
+         }
+         
         return $this;
     }
 
